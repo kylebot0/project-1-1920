@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Privacy & eigenaarschap</title>
 
+    <link rel="stylesheet" href="src/css/styles.css" />
+  </head>
+
+  <body>
+    <nav>
+      <img src="src/img/oba-logo.png" />
+      <ul>
+        <li>actueel</li>
+        <li>service</li>
+        <li>agenda</li>
+        <li>educatie</li>
+        <li>collectie</li>
+        <li>jeugd</li>
+      </ul>
+    </nav>
+    <form action="/">
+      <div tabindex="0">
+        <button id="clear-field" type="button"></button>
+        <input
+          id="search"
+          type="text"
+          placeholder="Zoeken..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="toggle-filter" type="button"></button>
+      </div>
+      <div class="container-filter">
+        <section><h2>Auteur</h2></section>
+        <section><h2>Genre</h2></section>
+        <section><h2>Taal</h2></section>
+        <section><h2>Doelgroep</h2></section>
+      </div>
+    </form>
+    <main>
+      <h1>OBA Better search</h1>
+      <button id="page-previous"><- Vorige pagina</button>
+      <button id="page-next">Volgende pagina -></button>
+    </main>
+    <div class="loading-state">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <script src="dist/bundle.js"></script>
+  </body>
+</html>
