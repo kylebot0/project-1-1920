@@ -45,7 +45,6 @@ form {
 
 nav {
     border-bottom: 1px solid lightgray;
-
 }
 
 nav ul {
@@ -86,19 +85,16 @@ form button {
 form button:first-of-type {
     background: white url("../img/x.png") no-repeat center center;
     background-size: 1.25em;
-
 }
 
 form button:last-of-type {
     background: white url("../img/filter.png") no-repeat center center;
     background-size: 1em;
-
 }
 
 form input {
     outline: none;
     transition: 200ms all;
-
     height: 3.5em;
     width: 800px;
     border: none;
@@ -109,6 +105,11 @@ form div:focus-within {
 }
 
 main {
+    display: grid;
+    grid-template-columns: 2fr 1fr
+}
+
+main .article-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -128,7 +129,7 @@ article img {
 }
 
 article button,
-main>button {
+main .article-container>button {
     width: 110px;
     height: 50px;
     display: flex;
@@ -146,23 +147,24 @@ main>button {
     font-size: 0.87em;
 }
 
-main>button {
+main .article-container>button {
     width: 200px;
+    justify-self: center;
+    display: none;
 }
 
-main>button:hover {
+main .article-container>button:hover {
     box-shadow: inset 200px 0px 0px 0px rgb(206, 205, 205) !important;
 }
 
-main>button:last-of-type {
+main .article-container>button:last-of-type {
     text-align: right;
 }
 
 article button:hover,
-main>button:hover {
+main .article-container>button:hover {
     border-color: gray;
     box-shadow: inset 110px 0px 0px 0px rgb(206, 205, 205);
-
 }
 
 main h1 {
@@ -189,21 +191,25 @@ main h1 {
 }
 
 .lds-ellipsis div:nth-child(1) {
+    background-color: #FE0000;
     left: 8px;
     animation: lds-ellipsis1 0.6s infinite;
 }
 
 .lds-ellipsis div:nth-child(2) {
+    background-color: #FE0000;
     left: 8px;
     animation: lds-ellipsis2 0.6s infinite;
 }
 
 .lds-ellipsis div:nth-child(3) {
+    background-color: #FE0000;
     left: 32px;
     animation: lds-ellipsis2 0.6s infinite;
 }
 
 .lds-ellipsis div:nth-child(4) {
+    background-color: #FE0000;
     left: 56px;
     animation: lds-ellipsis3 0.6s infinite;
 }
@@ -212,7 +218,6 @@ main h1 {
     0% {
         transform: scale(0);
     }
-
     100% {
         transform: scale(1);
     }
@@ -222,7 +227,6 @@ main h1 {
     0% {
         transform: scale(1);
     }
-
     100% {
         transform: scale(0);
     }
@@ -232,7 +236,6 @@ main h1 {
     0% {
         transform: translate(0, 0);
     }
-
     100% {
         transform: translate(24px, 0);
     }
@@ -250,7 +253,6 @@ main h1 {
 }
 
 .container-filter {
-
     margin-top: 1em;
     margin-left: 2.5em;
     display: grid;
@@ -285,4 +287,192 @@ main h1 {
     width: 100%;
     position: fixed;
     top: 0;
+}
+
+.button-active {
+    display: flex;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+
+/* The Close Button */
+
+.close {
+    color: black;
+    transition: all 300ms;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #FE0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    color: black;
+}
+
+.modal .modal-body h2 {
+    font-size: 0.87em;
+    margin: 1em;
+}
+
+.modal-body article {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    /* grid-template-rows: 1fr 1fr; */
+    padding: 2px 16px;
+}
+
+.modal-body article p {
+    font-size: 0.87em;
+}
+
+.modal-body article p:last-of-type {
+    font-size: 0.6em;
+    color: gray;
+    font-style: italic;
+}
+
+.slider-info {
+    font-size: 0.6em;
+    color: gray;
+    font-style: italic;
+}
+
+.switch {
+    justify-self: flex-end;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch input:checked+.slider {
+    background-color: #FE0000;
+}
+
+.switch input:focus+.slider {
+    box-shadow: 0 0 1px #FE0000;
+}
+
+.switch input:checked+.slider:before {
+    transform: translateX(36px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.modal-body article>input {
+    align-self: center;
+    height: 25px;
+}
+
+aside {
+    /* margin: 1em;
+    padding: 0.5em;
+    background-color: white;
+    box-shadow: 7px 4px 30px 0px rgba(237, 237, 237, 1);
+    display: flex;
+    flex-direction: column; */
 }

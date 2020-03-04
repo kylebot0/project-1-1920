@@ -1,56 +1,142 @@
 <!DOCTYPE html>
 <html lang="nl" dir="ltr">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>Privacy & eigenaarschap</title>
 
     <link rel="stylesheet" href="src/css/styles.css" />
-  </head>
+</head>
 
-  <body>
+<body>
+    <div id="modal-profile" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Profiel</h2>
+            </div>
+            <div class="modal-body">
+                <article>
+                    <h2>Gender:</h2>
+                    <p>Man</p>
+                    <label class="switch">
+              <input id="gender" type="checkbox">
+              <span class="slider round"></span>
+            </label>
+                    <p>*Deze data wordt gebruikt om jouw gepersonaliseerde boekvoorkeuren te bepalen, klik hier om deze gegevens uit te schakelen</p>
+
+                </article>
+                <article>
+                    <h2>Geboortejaar:</h2>
+                    <p>1997</p>
+                    <label class="switch">
+              <input id="year"type="checkbox">
+              <span class="slider round"></span>
+            </label>
+                    <p>*Deze data wordt gebruikt om jouw gepersonaliseerde boekvoorkeuren te bepalen voor jouw leeftijdscategorie, klik hier om deze gegevens uit te schakelen</p>
+
+                </article>
+                <article>
+                    <h2>Woonplaats:</h2>
+                    <p>Amsterdam</p>
+                    <label class="switch">
+              <input id="place"type="checkbox">
+              <span class="slider round"></span>
+            </label>
+                    <p>*Deze data wordt gebruikt om boeken in jouw regio te zoeken, klik hier om deze gegevens uit te schakelen</p>
+
+                </article>
+                <article>
+                    <h2>Favoriete genre:</h2>
+                    <input class="genre"></input>
+                    <label class="switch">
+              <input id="genre"type="checkbox">
+              <span class="slider round"></span>
+            </label>
+                    <p class="slider-info">*Deze data wordt gebruikt om jouw gepersonaliseerde boekvoorkeuren te bepalen, klik hier om deze gegevens uit te schakelen
+                    </p>
+
+                </article>
+                <article>
+                    <h2>Favoriete auteur:</h2>
+                    <input class="author"></input>
+                    <label class="switch">
+              <input id="author"type="checkbox">
+              <span class="slider round"></span>
+            </label>
+                    <p class="slider-info">*Deze data wordt gebruikt om jouw gepersonaliseerde boekvoorkeuren te bepalen, klik hier om deze gegevens uit te schakelen
+                    </p>
+
+                </article>
+                <article>
+                    <h2>Voorkeur taal:</h2>
+                    <input class="language"></input>
+                    <label class="switch">
+              <input id="language"type="checkbox">
+              <span class="slider round"></span>
+            </label>
+                    <p class="slider-info">*Deze data wordt gebruikt om jouw gepersonaliseerde boekvoorkeuren te bepalen, klik hier om deze gegevens uit te schakelen
+                    </p>
+
+                </article>
+            </div>
+        </div>
+    </div>
     <nav>
-      <img src="src/img/oba-logo.png" />
-      <ul>
-        <li>actueel</li>
-        <li>service</li>
-        <li>agenda</li>
-        <li>educatie</li>
-        <li>collectie</li>
-        <li>jeugd</li>
-      </ul>
+        <img src="src/img/oba-logo.png" />
+        <ul>
+            <li>actueel</li>
+            <li>service</li>
+            <li>agenda</li>
+            <li>educatie</li>
+            <li>collectie</li>
+            <li>jeugd</li>
+            <li class="profile">profiel</li>
+        </ul>
     </nav>
     <form action="/">
-      <div tabindex="0">
-        <button id="clear-field" type="button"></button>
-        <input
-          id="search"
-          type="text"
-          placeholder="Zoeken..."
-          autocomplete="off"
-          spellcheck="false"
-        />
-        <button id="toggle-filter" type="button"></button>
-      </div>
-      <div class="container-filter">
-        <section><h2>Auteur</h2></section>
-        <section><h2>Genre</h2></section>
-        <section><h2>Taal</h2></section>
-        <section><h2>Doelgroep</h2></section>
-      </div>
+        <div tabindex="0">
+            <button id="clear-field" type="button"></button>
+            <input id="search" type="text" placeholder="Zoeken..." autocomplete="off" spellcheck="false" />
+            <button id="toggle-filter" type="button"></button>
+        </div>
+        <div class="container-filter">
+            <section>
+                <h2>Auteur</h2>
+            </section>
+            <section>
+                <h2>Genre</h2>
+            </section>
+            <section>
+                <h2>Taal</h2>
+            </section>
+            <section>
+                <h2>Doelgroep</h2>
+            </section>
+        </div>
     </form>
     <main>
-      <h1>OBA Better search</h1>
-      <button id="page-previous"><- Vorige pagina</button>
-      <button id="page-next">Volgende pagina -></button>
+
+        <div class="article-container">
+            <h1>OBA Better search</h1>
+            <button id="page-previous">Vorige pagina</button>
+            <button id="page-next">Volgende pagina</button>
+        </div>
+        <aside>
+            <h1></h1>
+        </aside>
+
     </main>
     <div class="loading-state">
-      <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
     <script src="dist/bundle.js"></script>
-  </body>
+</body>
+
 </html>

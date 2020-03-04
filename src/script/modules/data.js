@@ -25,7 +25,18 @@ const createData =  () => {
             console.log(data)
                 return data;
         },
-        getLoanData:  () => {
+        getPageData:  async (query, pageNumber) => {
+            let page = pageNumber
+            let url = `${cors}${endpoint}${query}&authorization=${key}&detaillevel=${detail}&output=json&page=${page}`;
+            let data = await fetch(url, config)
+                .then(response => {
+                    return response.json();
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            console.log(data)
+            return data;
         },
         
         
