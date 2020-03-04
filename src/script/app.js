@@ -127,15 +127,26 @@ const toggleModal = () => {
 const setProfileSettings = () => {
     const inputSwitches = selectAll(".switch input")
     inputSwitches.forEach((item, i) => {
+        let storageItems = storage.getItem()
+        if (storageItems) {
+            Object.keys(storageItems.profile).forEach((storageItem, itemIndex) => {
+                if (storageItem == item.id) {
+                    item.checked = storageItems.profile[storageItem]
+                    state.profile[storageItem] = storageItems.profile[storageItem]
+                }
+            })
+        }
         item.addEventListener("click", function() {
             let isChecked = this.checked
             let thisId = this.id;
             Object.keys(state.profile).forEach((option) => {
                 if (option == thisId && isChecked) {
                     state.profile[option] = true;
+                    storage.setItem(state)
                     console.log(state.profile)
                 } else if (option == thisId && !isChecked) {
                     state.profile[option] = false;
+                    storage.setItem(state)
                     console.log(state.profile)
                 }
             })
@@ -145,20 +156,34 @@ const setProfileSettings = () => {
 const setProfileValues = () => {
     const inputSwitches = selectAll(".modal-body article>input")
     inputSwitches.forEach((input, i) => {
+        let storageItems = storage.getItem()
+        if (storageItems) {
+            Object.keys(storageItems.profile.inputValues).forEach((storageItem, itemIndex) => {
+                if (storageItem == input.classList.value) {
+                    input.value = storageItems.profile.inputValues[storageItem]
+                }
+            })
+        }
         input.addEventListener("input", function() {
             let val = this.value
             let thisId = this.classList.value
             console.log(thisId)
             Object.keys(state.profile).forEach((option) => {
                 if (option == thisId) {
-                    state.profile[option] = val;
-                    console.log(state.profile)
+                    console.log(state.profile.inputValues[option])
+                    state.profile.inputValues[option] = val;
+                    storage.setItem(state)
+
                 } else {
                     return;
                 }
             })
         })
     })
+}
+
+const searchRecommendations = () => {
+    const container = select("aside")
 }
 
 const app = async() => {
@@ -183,16 +208,25 @@ const app = async() => {
 
         if (input.value.length == 0 || input.value == undefined) {
             setTimeout(() => {
-
+                select("main div > h1").textContent = ""
                 removeArticles()
+                select(".loading-state").classList.remove("loading");
             }, 1000);
         } else {
-            const items = await data.getData(input.value);
-            toggleButtons()
-            pages(input.value, items);
-            removeArticles()
-            select(".loading-state").classList.remove("loading");
-            render.renderOverview(items);
+            let toggle = true
+            if (toggle) {
+                toggle = false
+                const items = await data.getData(input.value);
+                toggle = true
+                console.log(items)
+                items.results.reverse()
+                toggleButtons()
+                pages(input.value, items);
+                removeArticles()
+                select(".loading-state").classList.remove("loading");
+                render.renderOverview(items);
+            }
+
         }
     });
 };

@@ -2,10 +2,10 @@ const createStorage = function() {
 
     return {
         getItem: function() {
-            if (window.localStorage.length == 0) {
+            if (!window.localStorage.preferences) {
                 return false
-            } else if (window.localStorage.items.length >= 1) {
-                let parsed = JSON.parse(window.localStorage.getItem("items"));
+            } else if (window.localStorage.preferences) {
+                let parsed = JSON.parse(window.localStorage.getItem("preferences"));
                 return parsed;
             }
         },
