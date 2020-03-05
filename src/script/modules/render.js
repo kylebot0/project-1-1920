@@ -25,7 +25,21 @@ const createRender = () => {
             });
         },
         renderRecommendations: data => {
+          const results = data;
+          const container = select("aside")
+          results.forEach((item, i) => {
+            if (item.coverimages.length === 1) {
+              item.coverimages.push(item.coverimages[0])
+            }
+            const html = `
+            <div class="recommendations">
+                ${item.coverimages !== undefined ? `<img src="${item.coverimages[1]}">` : null}
 
+              <h3>${item.titles[0]}</h3>
+            </div>
+          `;
+            container.insertAdjacentHTML("beforeend", html);
+          });
         }
     };
 };

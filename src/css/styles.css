@@ -468,11 +468,43 @@ main h1 {
     height: 25px;
 }
 
+main>h1 {
+    grid-column: 2;
+}
+
+.recommendations-container {
+    display: grid;
+    grid-template-rows: 80px 300px;
+}
+
 aside {
-    /* margin: 1em;
+    grid-column: 1;
+    grid-row: 2;
+    overflow-x: scroll;
+    margin: 1em;
     padding: 0.5em;
     background-color: white;
     box-shadow: 7px 4px 30px 0px rgba(237, 237, 237, 1);
     display: flex;
-    flex-direction: column; */
+    flex-direction: row;
+}
+
+aside img {
+    padding: 0.5em;
+    height: 100px;
+    width: 80px;
+}
+
+aside div h3 {
+    margin: 0.5em;
+    font-size: 0.87em;
+}
+
+aside div {
+    display: flex;
+    flex-direction: column;
+}
+
+.lds-recommendations {
+    display: none;
 }

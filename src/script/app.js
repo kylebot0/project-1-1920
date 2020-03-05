@@ -137,6 +137,7 @@ const setProfileSettings = () => {
             })
         }
         item.addEventListener("click", function() {
+            searchRecommendations()
             let isChecked = this.checked
             let thisId = this.id;
             Object.keys(state.profile).forEach((option) => {
@@ -165,9 +166,9 @@ const setProfileValues = () => {
             })
         }
         input.addEventListener("input", function() {
+            searchRecommendations()
             let val = this.value
             let thisId = this.classList.value
-            console.log(thisId)
             Object.keys(state.profile).forEach((option) => {
                 if (option == thisId) {
                     console.log(state.profile.inputValues[option])
@@ -182,8 +183,53 @@ const setProfileValues = () => {
     })
 }
 
-const searchRecommendations = () => {
+const searchRecommendations = async() => {
     const container = select("aside")
+    const inputSwitches = selectAll(".switch input")
+    const inputValues = selectAll(".modal-body article>input")
+    select(".recommendations-container h2").textContent = ""
+    select(".lds-recommendations").classList.toggle("loading")
+
+    let options = []
+    inputSwitches.forEach((input, i) => {
+        if (input.checked) {
+            inputValues.forEach((inputValue) => {
+                if (input.id == inputValue.classList.value) {
+                    let category = inputValue.classList.value
+                    let val = inputValue.value
+                    let obj = { category: val }
+                    options.push(obj)
+                }
+            })
+        }
+    })
+    let loans = []
+    if (loans.length == 0) {
+        loans = await data.getRecommendationData()
+    }
+    // let loansGenre = loans.map(item => {
+    //     return item.genre
+    // })
+    // console.log(loansGenre)
+    const div = selectAll(".recommendations")
+    div.forEach((item, i) => {
+        item.remove()
+    })
+
+    if (options.length == 0) {
+        select(".lds-recommendations").classList.toggle("loading")
+        select(".recommendations-container h2").textContent = "Geen resultaten"
+    } else {
+        let filtered = loans.filter((item, i) => {
+            return item.genre == options[0].category
+        })
+        filtered = filtered.slice(0, 10)
+        let recommendations = await data.getSingleData(filtered)
+        select(".lds-recommendations").classList.toggle("loading")
+        render.renderRecommendations(recommendations)
+    }
+
+
 }
 
 const app = async() => {
@@ -195,6 +241,7 @@ const app = async() => {
     toggleModal()
     setProfileSettings()
     setProfileValues()
+    searchRecommendations()
     form.addEventListener("submit", async event => {
         event.preventDefault();
     });
@@ -208,7 +255,7 @@ const app = async() => {
 
         if (input.value.length == 0 || input.value == undefined) {
             setTimeout(() => {
-                select("main div > h1").textContent = ""
+                select("main > div > h1").textContent = "0 resultaten"
                 removeArticles()
                 select(".loading-state").classList.remove("loading");
             }, 1000);
