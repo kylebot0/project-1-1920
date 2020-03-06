@@ -197,7 +197,14 @@ const searchRecommendations = async() => {
                 if (input.id == inputValue.classList.value) {
                     let category = inputValue.classList.value
                     let val = inputValue.value
-                    let obj = { category: val }
+                    let obj = {}
+                    if (category == "genre") {
+                        obj = { category: val }
+                    } else if (category == "author") {
+                        obj = { author: val }
+                    } else if (category == "language") {
+                        obj = { language: val }
+                    }
                     options.push(obj)
                 }
             })
@@ -220,16 +227,32 @@ const searchRecommendations = async() => {
         select(".lds-recommendations").classList.toggle("loading")
         select(".recommendations-container h2").textContent = "Geen resultaten"
     } else {
-        let filtered = loans.filter((item, i) => {
+        console.log(options)
+        let filtered = []
+        filtered = loans.filter((item, i) => {
             return item.genre == options[0].category
         })
-        filtered = filtered.slice(0, 10)
-        let recommendations = await data.getSingleData(filtered)
-        select(".lds-recommendations").classList.toggle("loading")
-        render.renderRecommendations(recommendations)
+        console.log(filtered)
+        if (options.length >= 2) {
+            let filteredLang = filtered.filter((item, i) => {
+
+                return item.taal == options[1].language
+            })
+            filtered = filteredLang
+        }
+
+        console.log(filtered)
+        if (filtered.length == 0) {
+            select(".recommendations-container h2").textContent = "Geen resultaten"
+            select(".lds-recommendations").classList.toggle("loading")
+        } else {
+            select(".recommendations-container h2").textContent = ""
+            filtered = filtered.slice(0, 10)
+            let recommendations = await data.getSingleData(filtered)
+            select(".lds-recommendations").classList.toggle("loading")
+            render.renderRecommendations(recommendations)
+        }
     }
-
-
 }
 
 const app = async() => {

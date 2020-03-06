@@ -9,8 +9,8 @@ async function asyncForEach(array, callback) {
 const createData = () => {
     const cors = 'https://cors-anywhere.herokuapp.com/';
     const endpoint = 'https://zoeken.oba.nl/api/v1/search/?q=';
-    const key = '1e19898c87464e239192c8bfe422f280';
-    const secret = '4289fec4e962a33118340c888699438d';
+    const key = '0076bc3bc11d080e07a303360178002a';
+    const secret = '187b973dc49e054fa7635313a9c8540f';
     const detail = 'Default';
 
 
