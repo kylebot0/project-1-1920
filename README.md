@@ -1,56 +1,129 @@
-# Project 1 @cmda-minor-web · 2019-2020
+# Choose your data ⚙️
 
-## Zoek in de de collectie van de OBA
+This project uses the OBA Search API to collect data about books. It can search for certain titles, and you can decide what data is used about you for searching for recommendations.
 
-Het project vindt plaats bij de Centrale OBA. Maandagochtend is om 10.30 uur de kickoff (10:15 uur inloop), vrijdag zijn de presentaties van de resultaten. In een week bouwt iedere student een eigen prototype dat bezoekers kan helpen om items uit de OBA collectie te vinden. Technieken geleerd bij [CSS to the Rescue](https://github.com/cmda-minor-web/css-to-the-rescue-1819) en [Web App from Scratch](https://github.com/cmda-minor-web/web-app-from-scratch-1819) worden toegepast bij het bouwen van de de prototypes.
+![Project Image](https://github.com/kylebot0/web-app-from-scratch-1920/blob/master/gh-images/hoofdpagina.png)
+> Overview page
 
-## Instructie voor het gebruiken van de API
+## Table of Contents 🗃
+- [Choose your data ⚙️](#choose-your-data---)
+  * [Table of Contents 🗃](#table-of-contents---)
+  * [Live demo](#live-demo)
+  * [To Do and features 📌](#to-do-and-features---)
+  * [Description 📝](#description---)
+  * [Installing 🔍](#installing---)
+    + [Packages and Technologies](#packages-and-technologies)
+  * [API 🐒](#api---)
+  * [Keep up to date](#keep-up-to-date)
+  * [Contributing](#contributing)
+  * [Sources 📚](#sources---)
+    + [Credits](#credits)
+  * [Licence 🔓](#licence---)
 
- [http://zoeken.oba.nl/api/v1](http://zoeken.oba.nl/api/v1)
- 
- Zie voorbeeld code in deze repository voor het aanspreken van de API.
+## Live demo
+[Direct link](https://kylebot0.github.io/project-1-1920/)
+```
+https://kylebot0.github.io/project-1-1920/
+```
 
-## Programma
-We verzamelen maandagochtend om 10.15 op de 1e verdieping van de Centrale OBA, [Oosterdokskade 143](https://www.google.com/maps/place/OBA+library+of+Amsterdam/@52.3756983,4.9082087,15z/data=!4m2!3m1!1s0x0:0x6b97f693e6ecb494?ved=2ahUKEwioo6OrzubgAhWLNOwKHR6KDQgQ_BIwCnoECAYQCA).
+## To Do and features 📌
+Things to do in this project:
 
-## Werkwijze en Criteria
-### Werkwijze
-Full-time week werken aan (technisch) bewijzen van een concept-idee. Vrijdag is de pitch! Student laat zien dat hij/zij de vakken [CSS to the Rescue](https://github.com/cmda-minor-web/css-to-the-rescue-1819) en [Web App from Scratch](https://github.com/cmda-minor-web/web-app-from-scratch-1819) begrijpt en beheerst.
+- [ ] Add all the options in profile to recommendations.
+- [ ] Instead of using 1 / 5 of the loan data, use the entire dataset.
+- [ ] Add detail pages.
+- [ ] Filters.
 
-Op maandag, woensdag en vrijdag zijn er coaches aanwezig voor coaching en feedback. Maandag is de kickoff, woiensdagochtend zijn er standups om de status door te spreken en vrijdag is de beoordeling. Waar ben je mee bezig? Loop je ergens vast of heb je hulp nodig? Waar sta je?
+Features:
 
-### Beoordeling
-Tijdens de beoordeling krijg je feedback op het resultaat en op je functioneren. De vakdocenten kijken naar je code en beoordelen In hoeverre je in het project laten zien dat je de bijhorende vakken beheerst en goed hebt toegepast. Lifely is geïnteresseerd in hoeverre je oplossing voldoet aan de eisen die zijzelf stellen aan hun producten. Misschien laat je wel wat zien waar ze zelf nog niet aan gedacht hebben?
+- [x] Search for books.
+- [x] Choose which data you wanna use.
+- [x] Change what you want in your profile, except for important data.
+- [x] Get recommendations based on your preferences.
 
-Het project telt als AVV mee met de Meesterproef.
+## Description 📝
+Choose your data uses the OBA Search API to collect data about books. It's focused on getting back the privacy you own. It can search for certain titles, and you can decide what data is used about you for searching for recommendations. If everything is turned off OBA, will not use your data for getting you recommendations. 
 
-### Feedback over functioneren
-Je hebt een leergierig, gedreven en zelfredzame houding nodig om de minor te kunnen halen. Welke vaardigheden heb je laten zien? Onderzoekend vermogen? Creativiteit? Conceptueel? In hoeverre komen je houding en verworven vaardigheden overeen met wat een frontender in de praktijk nodig heeft?
+![Detail page](https://github.com/kylebot0/web-app-from-scratch-1920/blob/master/gh-images/detailpagina.png)
+> Detail page
 
-### Feedback over Web App from Scratch
-In het vak [Web App from Scratch](https://github.com/cmda-minor-web/web-app-from-scratch-1819) heb je geleerd een web app te maken zonder frameworks of onnodige libraries, dus zoveel mogelijk met native HTML, CSS & JavaScript. Het eindproduct is een modulair opgezet prototype voor een single page web app. Data wordt opgehaald uit een externe API, waar nodig gemanipuleerd en vervolgens getoond in de Web App. Je leert hoe structuur aan te brengen in je code en hoe je hiermee 'from scratch' een web app kan maken.
+## Installing 🔍
+To install this application and enter the repo write the following into your terminal:
+```
+git clone https://github.com/kylebot0/project-1-1920.git && cd project-1-1920
+```
 
-### Feedback over CSS to the Rescue
-In het vak [CSS to the Rescue](https://github.com/cmda-minor-web/css-to-the-rescue-1819) heb je geleerd over de (brede) scope van CSS, over Progressive Enhancement, de _cascase_, _inheritance_ en _specifity_. Het is belangrijk om deze basisprincipes van CSS goed te begrijpen. Niet alleen op praktisch niveau, ook op experimenteel niveau. Zonder goed begrip van de basisprincipes is CSS magisch en weird. Met een goed begrip heb je CSS onder controle en kan je het laten doen wat jij wil. En dat is nodig om webpagina’s vorm te geven met attention to detail; webpagina’s waar mensen blij van worden.
+Because this project uses different modules, you'll have to npm install to get the different dependecies
+```
+npm install
+```
+To build all the modules, run
+```
+npm run watch
+```
 
-### Oplevering & criteria
-- Presentatie met je bevindingen bij de OBA. 
-- Github met je code en readme.
+### Packages and Technologies
+This project makes use of the following packages and technologies:
 
-<!-- Add a link to your live demo in Github Pages 🌐-->
+  * Webpack
 
-<!-- ☝️ replace this description with a description of your own work -->
+## API 🐒
+The data used throughout the application is from the OBA Search API ```zoeken.oba.nl/api/v1```.
+It is a free public api with a rate limit of 200 requests per hour.
 
-<!-- replace the code in the /docs folder with your own, so you can showcase your work with GitHub Pages 🌍 -->
+Because i call the API, from different links the data can vary.
+The data has i.e. the following structure:
+```javascript
+{
+    "inboekdatum": "15-06-17",
+    "taal": "dut",
+    "genre": "",
+    "jaar publ.": 2017,
+    "PPN": 410247596,
+    "ISBN": "9,78905E+12",
+    "matsrt": "JROM",
+    "inschr. datum": "24-04-09",
+    "woonplaats": "Amsterdam",
+    "geslacht": "Vrouwelijk",
+    "Lener": 37857,
+    "Locatie": "BBS",
+    "lencat": "JGD",
+    "exbarc": 10000038673026,
+    "titel": "Rafa wil drummen",
+    "fm. auteur": "Grift",
+    "vn. auteur": "Hester van de",
+    "kast": "A-GRIF",
+    "transtype": "Uitlening",
+    "transdat": "11-01-18",
+    "geboortejaar": 2008,
+    "postcode": 1034,
+    "": "",
+    "__1": ""
+  }
+```
 
-<!-- Add a nice poster image here at the end of the week, showing off your shiny frontend 📸 -->
+If you want to look at the docs from the API, and or are interested in easily seeing how it works. 
+OBA has a page for that.
+```
+zoeken.oba.nl/api/v1
+```
 
-<!-- Maybe a table of contents here? 📚 -->
+## Keep up to date
+Make sure you pull the repository once in a while since we are still working on this project, you can do this by using 
+```git pull```
 
-<!-- How about a section that describes how to install this project? 🤓 -->
+## Contributing
 
-<!-- ...but how does one use this project? What are its features 🤔 -->
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+## Sources 📚
+Sources i used throughout the project.
 
-<!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
+* zoeken.oba.nl/api/v1
+
+### Credits
+
+  * None
+
+## Licence 🔓
+MIT © [Kyle Bot](https://github.com/kylebot0)
