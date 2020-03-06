@@ -2,7 +2,7 @@
 
 This project uses the OBA Search API to collect data about books. It can search for certain titles, and you can decide what data is used about you for searching for recommendations.
 
-![Project Image](https://github.com/kylebot0/web-app-from-scratch-1920/blob/master/gh-images/hoofdpagina.png)
+![Project Image](https://github.com/kylebot0/project-1-1920/blob/master/gh-images/Choose%20your%20data.png)
 > Overview page
 
 ## Table of Contents 🗃
@@ -44,7 +44,7 @@ Features:
 ## Description 📝
 Choose your data uses the OBA Search API to collect data about books. It's focused on getting back the privacy you own. It can search for certain titles, and you can decide what data is used about you for searching for recommendations. If everything is turned off OBA, will not use your data for getting you recommendations. 
 
-![Detail page](https://github.com/kylebot0/web-app-from-scratch-1920/blob/master/gh-images/detailpagina.png)
+![Detail page]https://github.com/kylebot0/project-1-1920/blob/master/gh-images/Choose%20your%20data.png)
 > Detail page
 
 ## Installing 🔍
